@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cf9a00e3670ad934c9f50a44fb534686
-timeCreated: 1485600899
+guid: 8c9dd2c3e629ecb40ab92caf08c680ab
+timeCreated: 1485922291
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -13,7 +13,7 @@ ModelImporter:
     100010: Mesh6
     100012: Mesh7
     100014: Mesh8
-    100016: road1
+    100016: road_1_1
     100018: //RootNode
     400000: Mesh1
     400002: Mesh2
@@ -23,7 +23,7 @@ ModelImporter:
     400010: Mesh6
     400012: Mesh7
     400014: Mesh8
-    400016: road1
+    400016: road_1_1
     400018: //RootNode
     2300000: Mesh1
     2300002: Mesh2
