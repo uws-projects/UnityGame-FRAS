@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DayNightCycle : MonoBehaviour {
 
+    public String startHour;                    // HH:mm format
     public float timeOfTheDay;                  // level starting time in minutes  
     public int sunriseTime = 360;               // 6:00 in the morning in minutes
     public float speed = 1.0f;                  // time multiplier
@@ -39,6 +40,14 @@ public class DayNightCycle : MonoBehaviour {
     private void Start()
     {
         skyMat = RenderSettings.skybox;
+        if (startHour != null)
+        {
+            string[] time = startHour.Split(':');
+            int hours, minutes;
+            int.TryParse(time[0], out hours);
+            int.TryParse(time[1], out minutes);
+            timeOfTheDay = hours * 60 + minutes;
+        }
     }
 	
 	// Update is called once per frame
