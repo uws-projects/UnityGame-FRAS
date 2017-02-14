@@ -1,0 +1,51 @@
+fileFormatVersion: 2
+guid: c91c1eb85782d5748ace27eb4d7415bb
+SpeedTreeImporter:
+  serializedVersion: 4
+  mainColor: {r: 0.9705882, g: 0.8327765, b: 0.47102073, a: 1}
+  hueVariation: {r: 0.0030276843, g: 0.41176468, b: 0.15806587, a: 0.1}
+  alphaTestRef: 0.611
+  bestWindQuality: 4
+  hasBillboard: 1
+  lODSettings:
+  - height: 0.28568858
+    castShadows: 1
+    receiveShadows: 1
+    useLightProbes: 1
+    reflectionProbeUsage: 1
+    enableBump: 1
+    enableHue: 1
+    windQuality: 3
+  - height: 0.1448398
+    castShadows: 1
+    receiveShadows: 1
+    useLightProbes: 1
+    reflectionProbeUsage: 1
+    enableBump: 1
+    enableHue: 1
+    windQuality: 4
+  - height: 0.038528953
+    castShadows: 1
+    receiveShadows: 1
+    useLightProbes: 1
+    reflectionProbeUsage: 1
+    enableBump: 1
+    enableHue: 1
+    windQuality: 4
+  - height: 0.0022588815
+    castShadows: 0
+    receiveShadows: 0
+    useLightProbes: 0
+    reflectionProbeUsage: 0
+    enableBump: 1
+    enableHue: 1
+    windQuality: 1
+  enableSmoothLODTransition: 1
+  animateCrossFading: 1
+  billboardTransitionCrossFadeWidth: 0.303
+  fadeOutWidth: 0.541
+  scaleFactor: 0.3048
+  materialVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

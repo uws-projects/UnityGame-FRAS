@@ -1,18 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour {
 
-    public void LoadNextLevel()
+    public void StartRace()
     {
-        Application.LoadLevel(Application.loadedLevel+1);
+        SceneManager.LoadSceneAsync(1);
     }
-
-    public void LoadPreviousLevel()
-    {
-        Application.LoadLevel(Application.loadedLevel - 1);
-    }
-
 }
