@@ -5,6 +5,6 @@ public class ChangeScene : MonoBehaviour {
 
     public void StartRace()
     {
-        SceneManager.LoadSceneAsync(1);
+        Application.LoadLevel(Application.loadedLevel + 1);
     }
 }
