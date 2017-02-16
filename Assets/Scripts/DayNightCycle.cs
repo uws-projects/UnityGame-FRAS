@@ -6,10 +6,9 @@ using UnityEngine.UI;
 
 public class DayNightCycle : MonoBehaviour {
 
-    public String startHour;                    // HH:mm format
     public float timeOfTheDay;                  // level starting time in minutes  
     public int sunriseTime = 360;               // 6:00 in the morning in minutes
-    public float speed = 1.0f;                  // time multiplier
+    private float speed = 0.2f;                  // time multiplier
 
     public Transform starsTransform;
     public Light Sun;
@@ -17,7 +16,7 @@ public class DayNightCycle : MonoBehaviour {
 
     public Gradient nightDayLightColor;         // pattern for sun color
 
-    public float maxSunIntensity = 3.0f;        // maximum sun brightness (no HDR so 3 is enough)   
+    public float maxSunIntensity = 1.5f;        // maximum sun brightness
     public float minSunIntensity = 0.0f;        // minimum sun brightness
     public float minPoint = -0.2f;              // offset for the light to live when sun is under the horizon
 
@@ -40,13 +39,27 @@ public class DayNightCycle : MonoBehaviour {
     private void Start()
     {
         skyMat = RenderSettings.skybox;
-        if (startHour != null)
+        switch (PlayerPrefs.GetInt("TimeOfDay"))
         {
-            string[] time = startHour.Split(':');
-            int hours, minutes;
-            int.TryParse(time[0], out hours);
-            int.TryParse(time[1], out minutes);
-            timeOfTheDay = hours * 60 + minutes;
+            case 0:
+                // morning: 5:00
+                timeOfTheDay = 5 * 60 ;
+                break;
+            case 1:
+                // noon: 13:00
+                timeOfTheDay = 13 * 60;
+                break;
+            case 2:
+                // evening: 18:00
+                timeOfTheDay = 18 * 60;
+                break;
+            case 3:
+                // night: 22:00
+                timeOfTheDay = 22 * 60;
+                break;
+            default:
+                timeOfTheDay = 14 * 60;
+                break;
         }
     }
 	
@@ -64,13 +77,13 @@ public class DayNightCycle : MonoBehaviour {
         /*
             TO DO: remove daymovement on input;
          */
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.F12))
         {
-            speed += 1.0f;
+            speed *= 2.0f;
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.F11))
         {
-            speed -= 1.0f;
+            speed /= 2.0f;
         }
         timeOfTheDay = timeOfTheDay > 1440 ? 0 : timeOfTheDay;
     }
