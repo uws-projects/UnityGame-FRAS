@@ -7,8 +7,8 @@ public class SpotLightManager : MonoBehaviour {
 
     public Light light = null;
     public Text TimeOfDay = null;
-    public int HourToSwitchOnLights = 17;
-    public int HourToSwitchOffLights = 8;
+    private int HourToSwitchOnLights = 19;
+    private int HourToSwitchOffLights = 8;
 
 
 
