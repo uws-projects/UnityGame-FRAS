@@ -34,7 +34,7 @@ namespace UnityStandardAssets.Vehicles.Car
 #if !MOBILE_INPUT
                 float handbrake = CrossPlatformInputManager.GetAxis("Jump");
                 m_Car.Move(h, v, v, handbrake);
-                speedText.text = ((int)m_Car.CurrentSpeed).ToString();
+                speedText.text = m_Car.Speed.ToString();
 #else
             m_Car.Move(h, v, v, 0f);
 #endif
