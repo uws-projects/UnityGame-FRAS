@@ -54,12 +54,13 @@ public class RapaGalbena : MonoBehaviour {
         orderOfUI.Add(EasyRight);
         alpha = image.color.a;
     }
-	
+
+    private float delay = 2.0f;
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.UnloadLevel(1);
             Application.LoadLevel(0);
         }
         if (Input.GetKeyDown(KeyCode.R))
@@ -80,10 +81,16 @@ public class RapaGalbena : MonoBehaviour {
             Color color = image.color;
             color.a += 0.01f;
             image.color = color;
-            if (color.a > 1.5f)
+            if (color.a > 1.0f)
             {
-                Application.UnloadLevel(1);
-                Application.LoadLevel(0);
+                if (delay > 0.0f)
+                {
+                    delay -= 0.01f;
+                }
+                else
+                {
+                    Application.LoadLevel(0);
+                }
             }
         }
         if (Input.GetKeyDown(KeyCode.F10))
@@ -133,11 +140,11 @@ public class RapaGalbena : MonoBehaviour {
         if (orderOfUI.Count > 1)
         {
             Result.color = new Color(255, 0, 0);
-            Result.text = "Invalid Race, \n You did not follow directions\n Press ESC to return to menu";
+            Result.text = "Invalid Race Time!\n You did not follow directions";
         }
         else
         {
-            Result.text = "Race Completed " + getRaceTime() + "\n Press ESC to return to menu";
+            Result.text = "Race Completed: " + getRaceTime();
         }
         Result.gameObject.active = true;
         raceFinished = true;
