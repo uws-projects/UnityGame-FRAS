@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Vehicles.Car;
-using UnityStandardAssets.Characters.FirstPerson;
 
 public class RapaGalbena : MonoBehaviour {
 
@@ -17,6 +16,7 @@ public class RapaGalbena : MonoBehaviour {
     public GameObject MediumLeft;
     public GameObject MediumRight;
     public GameObject EasyRight;
+    public GameObject FrameRateCounter;
     private GameObject activeHUDDirection;
     public Text RaceTime;
     public Text Result;
@@ -80,6 +80,15 @@ public class RapaGalbena : MonoBehaviour {
             Color color = image.color;
             color.a += 0.01f;
             image.color = color;
+            if (color.a > 1.5f)
+            {
+                Application.UnloadLevel(1);
+                Application.LoadLevel(0);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.F10))
+        {
+            FrameRateCounter.SetActive(!FrameRateCounter.activeSelf);
         }
     }
 
