@@ -16,7 +16,7 @@ namespace UnityStandardAssets.Vehicles.Car
         public int HourToSwitchOffLights = 8;
 
         private Renderer m_Renderer;
-        private bool lightsOff;
+        private bool ligthsEnabled;
 
         // Use this for initialization
         void Start()
@@ -24,21 +24,20 @@ namespace UnityStandardAssets.Vehicles.Car
             int hour = 0;
             int.TryParse(TimeOfDay.text.Split(":"[0])[0], out hour);
             m_Renderer = GetComponent<Renderer>();
-            lightsOff = hour > HourToSwitchOffLights && hour < HourToSwitchOnLights;
-
+            ligthsEnabled = !(hour < HourToSwitchOffLights && hour > HourToSwitchOnLights);
         }
 
         // Update is called once per frame
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.L)) {
-                lightsOff = !lightsOff;
+                ligthsEnabled = !ligthsEnabled;
             }
-            m_Renderer.enabled = !lightsOff;
+            m_Renderer.enabled = !ligthsEnabled;
             rearLeft.enabled = m_Renderer.enabled || car.BrakeInput > 0f;
             rearRight.enabled = rearLeft.enabled;
-            frontLeft.enabled = !lightsOff;
-            frontRight.enabled = !lightsOff;
+            frontLeft.enabled = m_Renderer.enabled;
+            frontRight.enabled = m_Renderer.enabled;
         }
     }
 }
