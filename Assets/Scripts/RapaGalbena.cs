@@ -83,6 +83,7 @@ public class RapaGalbena : MonoBehaviour {
             Color color = image.color;
             color.a += 0.01f;
             image.color = color;
+
             if (color.a > 1.0f)
             {
                 if (delay > 0.0f)
@@ -91,6 +92,12 @@ public class RapaGalbena : MonoBehaviour {
                 }
                 else
                 {
+                    Application.LoadLevel(0);
+                }
+            } else
+            {
+                if (color.a > 0.5)
+                {
                     if (!printed)
                     {
                         string location = Application.dataPath;
@@ -98,16 +105,16 @@ public class RapaGalbena : MonoBehaviour {
                         location = location.Substring(0, index);
                         string time = Result.text;
                         index = time.IndexOf(":");
-                        time = time.Substring(index+2);
-                        time = time.Replace(":","_");
+                        time = time.Substring(index + 2);
+                        time = time.Replace(":", "_");
                         location = location + "/Result_" + time + ".png";
                         Debug.Log(location);
                         Application.CaptureScreenshot(location);
                         printed = true;
                     }
-                    Application.LoadLevel(0);
                 }
             }
+
         }
         if (Input.GetKeyDown(KeyCode.F10))
         {
