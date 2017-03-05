@@ -11,6 +11,7 @@ public class RapaGalbena : MonoBehaviour {
     public CarUserControl CarInput;
     private Transform resetPosition;
     public List<GameObject> orderOfUI = new List<GameObject>();
+    public GameObject FirstLeft;
     public GameObject HardLeft;
     public GameObject HardRight;
     public GameObject MediumLeft;
@@ -25,6 +26,7 @@ public class RapaGalbena : MonoBehaviour {
     public bool raceFinished = false;
     public Image image;
     public float alpha;
+    private bool printed = false;
 
     // Use this for initialization
     void Start () {
@@ -44,7 +46,7 @@ public class RapaGalbena : MonoBehaviour {
                 break;
         }
         resetPosition = Player.transform;
-        orderOfUI.Add(MediumLeft);
+        orderOfUI.Add(FirstLeft);
         orderOfUI.Add(HardRight);
         orderOfUI.Add(MediumLeft);
         orderOfUI.Add(HardLeft);
@@ -89,6 +91,20 @@ public class RapaGalbena : MonoBehaviour {
                 }
                 else
                 {
+                    if (!printed)
+                    {
+                        string location = Application.dataPath;
+                        int index = location.LastIndexOf("/");
+                        location = location.Substring(0, index);
+                        string time = Result.text;
+                        index = time.IndexOf(":");
+                        time = time.Substring(index+2);
+                        time = time.Replace(":","_");
+                        location = location + "/Result_" + time + ".png";
+                        Debug.Log(location);
+                        Application.CaptureScreenshot(location);
+                        printed = true;
+                    }
                     Application.LoadLevel(0);
                 }
             }
