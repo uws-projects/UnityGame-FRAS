@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class DayNightCycle : MonoBehaviour {
 
@@ -77,11 +76,11 @@ public class DayNightCycle : MonoBehaviour {
         /*
             TO DO: remove daymovement on input;
          */
-        if (Input.GetKeyDown(KeyCode.F12))
+        if (CrossPlatformInputManager.GetButtonDown("RB"))
         {
             speed *= 2.0f;
         }
-        if (Input.GetKeyDown(KeyCode.F11))
+        if (CrossPlatformInputManager.GetButtonDown("LB"))
         {
             speed /= 2.0f;
         }
