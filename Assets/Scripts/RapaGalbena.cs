@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Vehicles.Car;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class RapaGalbena : MonoBehaviour {
 
@@ -61,14 +62,12 @@ public class RapaGalbena : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Escape))
+        if (!timerActive && Input.anyKeyDown)
         {
-            Application.LoadLevel(0);
+            startTimer();
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (CrossPlatformInputManager.GetButtonDown("Reset"))
         {
-            Debug.Log("Pressed R");
-            Player.transform.rotation = resetPosition.rotation;
             Player.transform.position = resetPosition.position;
         }
 
@@ -119,6 +118,12 @@ public class RapaGalbena : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.F10))
         {
             FrameRateCounter.SetActive(!FrameRateCounter.activeSelf);
+        }
+        if (CrossPlatformInputManager.GetButtonDown("Cancel"))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Application.LoadLevel(0);
         }
     }
 
