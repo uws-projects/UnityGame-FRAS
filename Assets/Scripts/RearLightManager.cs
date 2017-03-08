@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets.Vehicles.Car
 {
@@ -30,7 +31,7 @@ namespace UnityStandardAssets.Vehicles.Car
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.L)) {
+            if (CrossPlatformInputManager.GetButtonDown("Lights")) {
                 ligthsEnabled = !ligthsEnabled;
             }
             m_Renderer.enabled = !ligthsEnabled;

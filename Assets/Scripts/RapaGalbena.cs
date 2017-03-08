@@ -62,15 +62,11 @@ public class RapaGalbena : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (CrossPlatformInputManager.GetButtonDown("Cancel"))
-        {            
-            Application.LoadLevel(0);
-        }
         if (!timerActive && Input.anyKeyDown)
         {
             startTimer();
         }
-        if (CrossPlatformInputManager.GetButtonDown("Fire3"))
+        if (CrossPlatformInputManager.GetButtonDown("Reset"))
         {
             Player.transform.position = resetPosition.position;
         }
@@ -122,6 +118,12 @@ public class RapaGalbena : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.F10))
         {
             FrameRateCounter.SetActive(!FrameRateCounter.activeSelf);
+        }
+        if (CrossPlatformInputManager.GetButtonDown("Cancel"))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Application.LoadLevel(0);
         }
     }
 
